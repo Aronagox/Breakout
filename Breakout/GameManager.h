@@ -2,13 +2,12 @@
 #include <SFML/Graphics.hpp>
 #include "CONSTANTS.h"
 #include "Paddle.h"
+#include "ScoreManager.h"
 #include "Ball.h"
 #include "BrickManager.h"
 #include "PowerupManager.h"
 #include "MessagingSystem.h"
 #include "UI.h"
-
-
 
 class GameManager {
 public:
@@ -23,6 +22,7 @@ public:
     Paddle* getPaddle() const;
     BrickManager* getBrickManager() const;
     PowerupManager* getPowerupManager() const;
+    ScoreManager* getScoreManager() const;
     sf::RenderWindow* getWindow() const;
     UI* getUI() const;
 
@@ -44,6 +44,7 @@ private:
     Ball* _ball;
     BrickManager* _brickManager;
     PowerupManager* _powerupManager;
+    ScoreManager* _scoreManager;
     MessagingSystem* _messagingSystem;
     UI* _ui;
 

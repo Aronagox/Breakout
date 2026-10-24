@@ -1,7 +1,7 @@
 #include "Brick.h"
 
-Brick::Brick(float x, float y, float width, float height)
-    : _isDestroyed(false)
+Brick::Brick(float x, float y, float width, float height, int points)
+    : _isDestroyed(false), _pointValue(points)
 {
     _shape.setPosition(x, y);
     _shape.setSize(sf::Vector2f(width, height));
@@ -19,3 +19,5 @@ sf::FloatRect Brick::getBounds() const
 {
     return _shape.getGlobalBounds();
 }
+
+int Brick::getPoints() { return _pointValue; };
