@@ -54,7 +54,7 @@ int BrickManager::checkCollision(sf::CircleShape& ball, sf::Vector2f& direction)
         // Mark the brick as destroyed (for simplicity, let's just remove it from rendering)
         // In a complete implementation, you would set an _isDestroyed flag or remove it from the vector
         _gameManager->getScoreManager()->incrementScore(brick.getPoints());
-        std::cout << _gameManager->getScoreManager()->getScore();
+        _gameManager->getUI()->updateScoreText(_gameManager->getScoreManager()->getScore());
         brick = _bricks.back();
         _bricks.pop_back();
         break;
