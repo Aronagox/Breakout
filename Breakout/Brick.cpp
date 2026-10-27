@@ -13,11 +13,11 @@ Brick::Brick(float x, float y, float width, float height, int points, int health
 
 sf::Color Brick::calculateColor() {
     sf::Color newColor = { 255,0,0,255 };
-    if (_currentHealth > 5) {
-        newColor.r -= std::max(0.f, (255.f / 5) * float(_currentHealth - 5));
+    if (_currentHealth > 3) {
+        newColor.r -= std::max(0.f, (255.f / 3) * float(_currentHealth - 3));
     }
     if (_currentHealth > 1) {
-        newColor.b += std::max(255.f, (255.f / 5) * float(_currentHealth - 1));
+        newColor.b += std::min(255.f, (255.f / 3) * float(_currentHealth - 1));
     }
     return newColor;
 }
