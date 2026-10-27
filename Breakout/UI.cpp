@@ -25,7 +25,7 @@ UI::UI(sf::RenderWindow* window, int lives, GameManager* gameManager)
 
 	_scoreText.setString("0");
 	_scoreText.setCharacterSize(30);
-	_scoreText.setPosition(windowDimensions.x - 30, 10);
+	_scoreText.setPosition(windowDimensions.x - 50, 10);
 	_scoreText.setFillColor(sf::Color::Green);
 	_font.loadFromFile("font/montS.ttf");
 	_powerupText.setFont(_font);
