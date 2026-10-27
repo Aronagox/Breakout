@@ -73,6 +73,10 @@ void GameManager::update(float dt)
     if (_levelComplete)
     {
         _masterText.setString("Level completed.");
+        _button->setActive(true);
+        if (_button->isClicked()) {
+            restartGame();
+        }
         return;
     }
     // pause and pause handling
