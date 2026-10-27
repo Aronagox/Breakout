@@ -8,6 +8,8 @@ public:
     void render(sf::RenderWindow& window);
     sf::FloatRect getBounds() const;
     void takeDamage(int damage = 1);
+    void setColliding(bool colliding);
+    bool getColliding();
     bool getDestroyed();
     int getHealth();
     int getPoints();
@@ -18,4 +20,5 @@ private:
     int _pointValue;
     int _maxHealth;
     int _currentHealth;
+    bool _isColliding;
 };

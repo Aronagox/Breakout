@@ -39,7 +39,17 @@ int BrickManager::checkCollision(sf::CircleShape& ball, sf::Vector2f& direction)
 {
     int collisionResponse = 0;  // set to 1 for horizontal collision and 2 for vertical.
     for (auto& brick : _bricks) {
-        if (!brick.getBounds().intersects(ball.getGlobalBounds())) continue;    // no collision, skip.
+        if (!brick.getBounds().intersects(ball.getGlobalBounds())) {
+            if (brick.getColliding()) {
+                brick.setColliding(false);
+            }
+            continue;
+
+        } // no collision, skip.
+
+        if (brick.getColliding()) {
+            continue;
+        } // brick has already collided this frame, skip
 
         sf::Vector2f ballPosition = ball.getPosition();
         float ballY = ballPosition.y + 0.5f * ball.getGlobalBounds().height;
@@ -51,6 +61,7 @@ int BrickManager::checkCollision(sf::CircleShape& ball, sf::Vector2f& direction)
             // unless it's horizontal (collision from side)
             collisionResponse = 1;
 
+        brick.setColliding(true);
         // Mark the brick as destroyed (for simplicity, let's just remove it from rendering)
         // In a complete implementation, you would set an _isDestroyed flag or remove it from the vector
         brick.takeDamage(1);

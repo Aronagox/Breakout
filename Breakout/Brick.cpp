@@ -1,10 +1,12 @@
 #include "Brick.h"-
-
+#include <iostream>
 
 Brick::Brick(float x, float y, float width, float height, int points, int health)
     : _isDestroyed(false), _pointValue(points), _maxHealth(health)
 {
     _currentHealth = _maxHealth;   
+    _isColliding = false;
+
     _shape.setPosition(x, y);
     _shape.setSize(sf::Vector2f(width, height));
     _shape.setFillColor(calculateColor());
@@ -28,12 +30,13 @@ void Brick::render(sf::RenderWindow& window)
     }
 }
 
-bool Brick::getDestroyed() {
-    return _isDestroyed;
+void Brick::setColliding(bool colliding) {
+    _isColliding = colliding;
 }
 
 void Brick::takeDamage(int damage) {
     _currentHealth -= damage;
+    std::cout << "Hit " << _currentHealth << std::endl;
     if (_currentHealth <= 0) {
         _isDestroyed = true;
     }
@@ -42,13 +45,13 @@ void Brick::takeDamage(int damage) {
     }
 }
 
-int Brick::getHealth() {
-    return _currentHealth;
-}
-
 sf::FloatRect Brick::getBounds() const
 {
     return _shape.getGlobalBounds();
 }
 
+
+bool Brick::getDestroyed() { return _isDestroyed; };
+int Brick::getHealth() { return _currentHealth; };
 int Brick::getPoints() { return _pointValue; };
+bool Brick::getColliding() { return _isColliding; };
