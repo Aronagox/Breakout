@@ -1,5 +1,4 @@
 #include "Brick.h"-
-#include <iostream>
 
 Brick::Brick(float x, float y, float width, float height, int points, int health)
     : _isDestroyed(false), _pointValue(points), _maxHealth(health)
@@ -36,7 +35,6 @@ void Brick::setColliding(bool colliding) {
 
 void Brick::takeDamage(int damage) {
     _currentHealth -= damage;
-    std::cout << "Hit " << _currentHealth << std::endl;
     if (_currentHealth <= 0) {
         _isDestroyed = true;
     }
