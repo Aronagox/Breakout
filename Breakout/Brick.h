@@ -11,8 +11,10 @@ public:
     int getHealth();
     int getPoints();
 private:
+    sf::Color calculateColor();
     sf::RectangleShape _shape;
     bool _isDestroyed;
     int _pointValue;
-    int _health;
+    int _maxHealth;
+    int _currentHealth;
 };

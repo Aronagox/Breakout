@@ -1,11 +1,17 @@
 #include "Brick.h"
 
 Brick::Brick(float x, float y, float width, float height, int points, int health)
-    : _isDestroyed(false), _pointValue(points), _health(health)
+    : _isDestroyed(false), _pointValue(points), _maxHealth(health)
 {
     _shape.setPosition(x, y);
     _shape.setSize(sf::Vector2f(width, height));
     _shape.setFillColor(sf::Color::Red);
+
+    _currentHealth = _maxHealth;
+}
+
+sf::Color calculateColor() {
+    
 }
 
 void Brick::render(sf::RenderWindow& window)
@@ -20,14 +26,14 @@ bool Brick::getDestroyed() {
 }
 
 void Brick::takeDamage(int damage) {
-    _health -= damage;
-    if (_health <= 0) {
+    _currentHealth -= damage;
+    if (_currentHealth <= 0) {
         _isDestroyed = true;
     }
 }
 
 int Brick::getHealth() {
-    return _health;
+    return _currentHealth;
 }
 
 sf::FloatRect Brick::getBounds() const
